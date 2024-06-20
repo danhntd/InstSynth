@@ -5,6 +5,7 @@ This repository is the official implementation of the paper entitled: **InstSynt
 
 [[Paper]]()
 
+*THE FULL VERSION IS TO BE UPDATED!
 
 ## 1. Environment Setup
 Download and install Anaconda with the recommended version from [Anaconda Homepage](https://www.anaconda.com/download): [Anaconda3-2019.03-Linux-x86_64.sh](https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh) 
@@ -31,7 +32,6 @@ After setting up the dependencies, use the command `python setup.py build develo
 In case you face some environmental conflicts, these installations may help:
 ```
 pip install mxnet-mkl==1.6.0 numpy==1.23.1
-pip install protobuf==3.20.* #demo.py
 ```
 
 ## 2. Data Preparation
