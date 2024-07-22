@@ -1,11 +1,13 @@
 # InstSynth: Instance-wise Prompt-guided Style Masked Conditional Data Synthesis for Scene Understanding
 
 This repository is the official implementation of the paper entitled: **InstSynth: Instance-wise Prompt-guided Style Masked Conditional Data Synthesis for Scene Understanding**. <br>
-**Authors**: Anonymous.
+**Authors**: Thanh-Danh Nguyen, Bich-Nga Pham, Trong-Tai Dam Vu, Vinh-Tiep Nguyen† , Thanh Duc Ngo, and Tam V. Nguyen.
 
-[[Paper]]()
+[[Paper]]() [[Code]](https://github.com/danhntd/InstSynth)
 
-*THE FULL VERSION IS TO BE UPDATED!
+---
+## Updates
+[2024/7] We have released the visualization, and initial instructions for InstSynth⚡!
 
 ## 1. Environment Setup
 Download and install Anaconda with the recommended version from [Anaconda Homepage](https://www.anaconda.com/download): [Anaconda3-2019.03-Linux-x86_64.sh](https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh) 
@@ -57,11 +59,11 @@ Please use the following bibtex to cite this repository:
 ```
 @inproceedings{nguyen2024instsynth,
   title={InstSynth: Instance-wise Prompt-guided Style Masked Conditional Data Synthesis for Scene Understanding},
-  author={},
-  booktitle={},
+  author={Nguyen, Thanh-Danh and Pham, Bich-Nga and Dam Vu, Trong-Tai and Nguyen, Vinh-Tiep and Ngo, Thanh Duc and Tam, Nguyen V.},
+  booktitle={2023 International Conference on Multimedia Analysis and Pattern Recognition (MAPR)},
   pages={1--6},
   year={2024},
-  organization={}
+  organization={IEEE}
 }
 ```
 
