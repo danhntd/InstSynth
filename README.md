@@ -1,9 +1,9 @@
 # InstSynth: Instance-wise Prompt-guided Style Masked Conditional Data Synthesis for Scene Understanding
 
 This repository is the official implementation of the paper entitled: **InstSynth: Instance-wise Prompt-guided Style Masked Conditional Data Synthesis for Scene Understanding**. <br>
-**Authors**: Thanh-Danh Nguyen, Bich-Nga Pham, Trong-Tai Dam Vu, Vinh-Tiep Nguyen† , Thanh Duc Ngo, and Tam V. Nguyen.
+**Authors**: Thanh-Danh Nguyen, Bich-Nga Pham, Trong-Tai Dam Vu, Vinh-Tiep Nguyen†, Thanh Duc Ngo, and Tam V. Nguyen.
 
-[[Paper]]() [[Code]](https://github.com/danhntd/InstSynth)
+[[Paper]]() [[Code]](https://github.com/danhntd/InstSynth) [[PDF]](https://danhntd.github.io/pdf/MAPR2024_InstSynth.pdf)
 
 ---
 ## Updates
