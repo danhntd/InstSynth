@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0 python evaluation_metrics.py --groundtruth <groundtruth path> --generated <generated instances path> 
