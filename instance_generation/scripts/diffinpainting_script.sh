@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0 python instance_generation_.py --mode diffpainting --model_path stabilityai/stable-diffusion-2-inpainting
