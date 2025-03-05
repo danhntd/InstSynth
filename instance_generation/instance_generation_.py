@@ -15,7 +15,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from diffusers import StableDiffusionInpaintPipeline
 from transformers import CLIPProcessor, CLIPModel
-from models.model import BlendedLatentDiffusionSDXL
+from models.bld import BlendedLatentDiffusionSDXL
 from ldm.util import instantiate_from_config
 from ldm.models.diffusion.ddim import DDIMSampler
 from ldm.models.diffusion.plms import PLMSSampler
@@ -254,10 +254,10 @@ def generate_diffpainting_samples(pipe, metadata, save_folder_name, city, args):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", type=str, choices=["bld", "gligen", "diffpainting"], required=True, help="Select the mode to run: 'bld', 'gligen', or 'diffpainting'")
+    parser.add_argument("--mode", type=str, choices=["bld", "gligen", "diffinpainting"], required=True, help="Select the mode to run: 'bld', 'gligen', or 'diffpainting'")
     
     # Common arguments
-    parser.add_argument("--folder", type=str, default="generation_samples", help="root folder for output")
+    parser.add_argument("--folder", type=str, default="generation_samples", help="root folder for output, it should include the metadata file and groundtruth folder")
     parser.add_argument("--batch_size", type=int, default=1, help="batch size")
     parser.add_argument("--device", type=str, default="cuda")
 
@@ -284,7 +284,7 @@ if __name__ == "__main__":
         with open(os.path.join(args.folder, "metadata_refined.json"), "r") as fIn:
             metadata = json.load(fIn)
 
-        cities = get_cities(os.path.join(args.folder, "leftImg8bit/train/"))
+        cities = get_cities(os.path.join("/mmlabworkspace_new/WorkSpaces/danhnt/InstMask2Image/cityscapes_synthesis/", "leftImg8bit/train/"))
         cities.sort()
 
         filtered_metadata = {}
@@ -333,7 +333,7 @@ if __name__ == "__main__":
         with open(os.path.join(args.folder, "metadata_refined.json"), "r") as fIn:           
             metadata = json.load(fIn)
 
-        cities = get_cities(os.path.join(args.folder, "leftImg8bit/train/"))
+        cities = get_cities(os.path.join("/mmlabworkspace_new/WorkSpaces/danhnt/InstMask2Image/cityscapes_synthesis/", "leftImg8bit/train/"))
         cities.sort()
 
         filtered_metadata = {}
@@ -349,7 +349,7 @@ if __name__ == "__main__":
             print(f"Current city: {city}")
             generate_gligen_samples(meta, filtered_metadata[city], gligen_save_folder_name, config, city, args, starting_noise)
 
-    elif args.mode == "diffpainting":
+    elif args.mode == "diffinpainting":
         DiffInpainting_save_folder_name = "DiffPainting"
         pipe = StableDiffusionInpaintPipeline.from_pretrained(
             args.model_path,
@@ -361,7 +361,7 @@ if __name__ == "__main__":
         with open(os.path.join(args.folder, "metadata_refined.json"), "r") as fIn:
             metadata = json.load(fIn)
         
-        cities = get_cities(os.path.join(args.folder, "leftImg8bit/train/"))
+        cities = get_cities(os.path.join("/mmlabworkspace_new/WorkSpaces/danhnt/InstMask2Image/cityscapes_synthesis/", "leftImg8bit/train/"))
         cities.sort()
 
         filtered_metadata = {}
