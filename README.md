@@ -7,7 +7,10 @@ This repository is the official implementation of the paper entitled: **InstSynt
 
 ---
 ## Updates
-[2024/7] We have released the visualization, and initial instructions for InstSynth⚡!
+[2024/7] We have released the visualization, and initial instructions for InstSynth!
+[2025/1] We have updated the source code for data and instance processing!
+[2025/2] We have updated the source code for conditional image generation phase⚡!
+
 
 ## 1. Environment Setup
 Download and install Anaconda with the recommended version from [Anaconda Homepage](https://www.anaconda.com/download): [Anaconda3-2019.03-Linux-x86_64.sh](https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh) 
@@ -38,6 +41,40 @@ pip install mxnet-mkl==1.6.0 numpy==1.23.1
 
 ## 2. Data Preparation
 In this work, we utilize Cityscapes Dataset for training and testing our proposed method.
+```
+# Define dataset paths
+DATASET_PATH="../cityscapes_synthesis_temp/"                           # Path to cityscape dataset download from web
+INPAINTING_PATH="../cityscapes_synthesis/DiffPainting/version01"       # Path to inpainted image from cityscape dataset
+OUTPUT_DATASET_PATH="cityscapes_diffpainting"                          # Path to new dataset
+
+# Step 1: Instance selection
+# k :  number of instance to be selected 
+python process_clean_ver.py \
+  --k 3 \
+  --train_folder "$DATASET_PATH"
+
+# Step 2: Integrate inpainted images with metadata and cropped region coordinates 
+python inpainted_integration.py \
+  --inpainting_dir "$INPAINTING_PATH" \
+  --metadata_path "${DATASET_PATH}metadata.json" \
+  --cropped_region_coordinates "${DATASET_PATH}cropped_region_coordinates.json" \
+  --output_folder_name "$OUTPUT_DATASET_PATH"
+
+# Step 3: Move Raw Data to the Output Dataset Folder
+python move_folder_clean_ver.py \
+  --src_path "$DATASET_PATH" \
+  --des_path "$OUTPUT_DATASET_PATH"
+
+# Step 4: Crop raw color & labelIds in the raw city folder to match new image pairs
+python drop_color_and_labelIds_clean_ver.py \
+  --cropped_region_coordinates_path "${OUTPUT_DATASET_PATH}/cropped_region_coordinates.json"
+
+# Step 5: Calculate Polygons for Inpainted Images
+cd cityscapes-to-coco-conversion
+python main_defined_clean_ver.py \
+  --dataset cityscapes \
+  --datadir "../$OUTPUT_DATASET_PATH"
+```
 
 ### Download the datasets
 
@@ -46,6 +83,11 @@ Please visit [this link](https://www.cityscapes-dataset.com/) for the dataset de
 ## 3. Training Pipeline
 Our proposed InstSynth framework:
 <img align="center" src="/visualization/framework.png">
+
+
+### Instance Segmentation 
+#### 
+####
 
 
 ## 4. Visualization
